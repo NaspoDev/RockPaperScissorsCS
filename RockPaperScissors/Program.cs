@@ -4,7 +4,10 @@
     {
         static void Main(string[] args)
         {
-            
+            // Welcome message
+            Console.WriteLine("Welcome to Rock Paper Scissors!\n");
+
+
         }
     }
 }
