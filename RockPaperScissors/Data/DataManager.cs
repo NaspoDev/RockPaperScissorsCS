@@ -1,26 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
-namespace RockPaperScissors.Data
+namespace AthanasiosT.RockerPaperScissors.Data
 {
     // Manages data. (Storing high score).
     internal class DataManager
     {
         // Data is stored in one file, rps-data.json.
-        const string DataFilePath = "%USERPROFILE%\\Documents\\RockPaperScissorsGame\\";
+        const string DataFileLocation = @"%USERPROFILE%\Documents\RockPaperScissorsGame\";
         const string DataFileName = "rps-data.json";
+        const string CompleteDataFilePath = DataFileLocation + DataFileName;
 
-        private LocalGameData gameData;
+        readonly GameData gameData;
 
+        // Constructor restores the game data from save file data.
         public DataManager()
         {
-            // set the high score variable upon creation (get it from the file
-            this.gameData = new LocalGameData();
-            gameData
+            // If the data file exists, read from it. Otherwise create a fresh GameData object.
+            if (File.Exists(CompleteDataFilePath))
+            {
+                // Read the file contents to get the raw json data.
+                string fileContents = File.ReadAllText(CompleteDataFilePath);
+                gameData = DeserializeLocalGameData(fileContents);
+            }
+            else
+            {
+                gameData = new GameData();
+            }
+            
+        }
+
+        // De-serializes and returns a new GameData object.
+        private GameData DeserializeLocalGameData(string rawJson)
+        {
+            return JsonConvert.DeserializeObject<GameData>(rawJson);
+        }
+
+        // Destructor saves the game data to the file.
+        ~DataManager()
+        {
+            string serializedJson = JsonConvert.SerializeObject(gameData);
+            File.WriteAllText(CompleteDataFilePath, serializedJson);
         }
     }
 }

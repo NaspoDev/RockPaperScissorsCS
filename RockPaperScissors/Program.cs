@@ -1,4 +1,4 @@
-﻿namespace RockPaperScissors
+﻿namespace AthanasiosT.RockerPaperScissors
 {
     internal class Program
     {
