@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RockPaperScissors.CLI
+namespace AthanasiosT.RockPaperScissors.CLI
 {
     internal class CLIUtils
     {
 
-        const string QuitInputValue = "quit";
+        public const string QuitInputValue = "quit";
 
         // Gets and returns a valid CLI input from the user.
-        // Takes in a number range argument and also checks for a quit input.
-        static string GetValidCliInput(int floorRange, int ceilRange)
+        // Takes in a number range argument and also checks for a quit input. (Range is ceil exclusive).
+        public static string GetValidCliInput(int floorRange, int ceilRange)
         {
             while (true)
             {
@@ -39,7 +39,7 @@ namespace RockPaperScissors.CLI
                     int value = Convert.ToInt32(input);
 
                     // Verify range.
-                    if (value >= floorRange && value <= ceilRange)
+                    if (value >= floorRange && value < ceilRange)
                     {
                         return Convert.ToString(value);
                     }
