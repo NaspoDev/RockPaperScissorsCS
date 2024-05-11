@@ -14,18 +14,28 @@ namespace AthanasiosT.RockerPaperScissors.CLI
         private const int AmountOfRoundsOdd = 3; // Amount of rounds played (takes best of). Must be odd and >= 3.
         private int playerScore = 0; 
         private int computerScore = 0;
-        private bool isFinished = false; // marked as true when the game finished, so it cannot be run again.
 
-        // Run the game process. Best of 3 against randomly generated moves.
+        // Game stats, fields. (Any form of data the we keep track of for a game)
+        private int rockPlayedAmount = 0;
+        private int paperPlayedAmount = 0;
+        private int scissorsPlayedAmount = 0;
+
+        // Game stats, properties.
+        internal int RockPlayedAmount { get; }
+        internal int PaperPlayedAmount { get; }
+        internal int ScissorsPlayedAmount { get; }
+
+        // Run the game process. Best of style, against randomly generated moves.
         internal void Run()
         {
             Console.WriteLine($"Let's play Rock-Paper-Scissors! Best of {AmountOfRoundsOdd} wins.");
 
+            // Play amount of rounds specified.
             for (int i = 0; i < AmountOfRoundsOdd; i++)
             {
-                playRound(i + 1);
+                PlayRound(i + 1);
 
-                // Check if game is over. (Check if best of 3 is achieved).
+                // Check if game is over. (Check if best of is achieved).
                 int bestOfThreshold = (int)Math.Ceiling((double)AmountOfRoundsOdd / 2);
                 if (playerScore >= bestOfThreshold || computerScore >= bestOfThreshold)
                 {
@@ -45,7 +55,7 @@ namespace AthanasiosT.RockerPaperScissors.CLI
         }
 
         // Play a round of rock paper scissors.
-        private void playRound(int roundNumber)
+        private void PlayRound(int roundNumber)
         {
             Moves computerMove = (Moves)rand.Next(0, 3); // Generate a random computer move.
 
@@ -63,9 +73,26 @@ namespace AthanasiosT.RockerPaperScissors.CLI
                 return;
             }
 
+            // Otherwise the player did not quit, find their move.
             Moves playerMove = (Moves)(Convert.ToInt32(playerInput) - 1); // extract the valid player move from the input.
 
-            // Otherwise, find the winner.
+            // Log the player move (for game stat tracking)
+            switch (playerMove)
+            {
+                case Moves.ROCK: 
+                    rockPlayedAmount++;
+                    break;
+
+                case Moves.PAPER:
+                    paperPlayedAmount++;
+                    break;
+
+                case Moves.SCISSORS:
+                    scissorsPlayedAmount++;
+                    break;
+            }
+
+            // Find the winner of this round.
             switch (computerMove)
             {
                 case Moves.ROCK:

@@ -14,6 +14,7 @@ namespace AthanasiosT.RockerPaperScissors.CLI
         // Ordered dict of menu options with their correlated action. 
         // The Action class in a function delegate with no arguments or return type.
         OrderedDictionary MenuOptions = new OrderedDictionary(); // There is no generic implementation if OrderedDictionary :(
+        internal List<Game> games = new List<Game>;
 
         public MenuCLI()
         {

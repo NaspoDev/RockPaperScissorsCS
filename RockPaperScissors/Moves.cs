@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AthanasiosT.RockerPaperScissors
 {
 
-    internal enum Moves
+    public enum Moves
     {
         ROCK = 0,
         PAPER = 1,
