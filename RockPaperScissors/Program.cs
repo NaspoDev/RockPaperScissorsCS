@@ -12,8 +12,8 @@ namespace AthanasiosT.RockerPaperScissors
             MenuCLI menu = new MenuCLI(dataManager); // Initialize the menu cli.
             
             // Welcome message
-            Console.WriteLine("Welcome to Rock Paper Scissors!\n");
-            menu.StartMenuCli();
+            Console.WriteLine("Welcome to Rock Paper Scissors!");
+            menu.Start();
         }
     }
 }

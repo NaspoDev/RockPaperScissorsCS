@@ -42,12 +42,15 @@ namespace AthanasiosT.RockPaperScissors.CLI
                     if (value >= floorRange && value < ceilRange)
                     {
                         return Convert.ToString(value);
+                    } else
+                    {
+                        Console.Write("Please enter a valid option: ");
                     }
                 }
                 // Catch integer parse. Therefore input was invalid. 
                 catch (Exception e)
                 {
-                    Console.WriteLine("Please enter a valid option.");
+                    Console.Write("Please enter a valid option: ");
                 }
             }
             

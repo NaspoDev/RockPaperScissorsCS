@@ -16,19 +16,19 @@ namespace AthanasiosT.RockerPaperScissors.CLI
         private int computerScore = 0;
 
         // Game stats, fields. (Any form of data the we keep track of for a game)
-        private int rockPlayedAmount = 0;
-        private int paperPlayedAmount = 0;
-        private int scissorsPlayedAmount = 0;
+        private int rockPlayedAmount;
+        private int paperPlayedAmount;
+        private int scissorsPlayedAmount;
 
         // Game stats, properties.
-        internal int RockPlayedAmount { get { return rockPlayedAmount; } } 
+        internal int RockPlayedAmount { get { return rockPlayedAmount; } }
         internal int PaperPlayedAmount { get { return paperPlayedAmount; } }
         internal int ScissorsPlayedAmount { get { return scissorsPlayedAmount; } }
 
         // Run the game process. Best of style, against randomly generated moves.
         internal void Start()
         {
-            Console.WriteLine($"Let's play Rock-Paper-Scissors! Best of {AmountOfRoundsOdd} wins.");
+            Console.WriteLine($"\n=== Let's play Rock-Paper-Scissors! Best of {AmountOfRoundsOdd} wins. ===");
 
             // Play amount of rounds specified.
             for (int i = 0; i < AmountOfRoundsOdd; i++)
@@ -42,14 +42,15 @@ namespace AthanasiosT.RockerPaperScissors.CLI
                     // Get the winner
                     if (playerScore >= 2)
                     {
-                        Console.WriteLine("Game over. You win!");
+                        Console.WriteLine("\nGame over. You win!");
                     }
                     else
                     {
-                        Console.WriteLine("Game over. You lost :(");
+                        Console.WriteLine("\nGame over. You lost :(");
                     }
                     // Print the score.
                     Console.WriteLine($"Your score: {playerScore} | Computer's score: {computerScore}");
+                    return;
                 }
             }
         }
@@ -60,9 +61,9 @@ namespace AthanasiosT.RockerPaperScissors.CLI
             Moves computerMove = (Moves)rand.Next(0, 3); // Generate a random computer move.
 
             // Prompt and get the player input.
-            Console.WriteLine($"Round {roundNumber}.");
+            Console.WriteLine($"\nRound {roundNumber}. Score: {playerScore} - {computerScore}");
             Console.WriteLine("(1) rock | (2) paper | (3) scissors");
-            Console.Write($"Enter your move (\"quit\" to quit): ");
+            Console.Write($"\nEnter your move (\"quit\" to quit): ");
             string playerInput = CLIUtils.GetValidCliInput(1, 4); // Input range from 1-3 because 0-2 doesnt look as good for the user.
 
             // If the player quit, set the game score to 0 for both and end.
@@ -76,56 +77,66 @@ namespace AthanasiosT.RockerPaperScissors.CLI
             // Otherwise the player did not quit, find their move.
             Moves playerMove = (Moves)(Convert.ToInt32(playerInput) - 1); // extract the valid player move from the input.
 
-            // Log the player move (for game stat tracking)
+            Console.WriteLine($"Computer chose {computerMove}."); // display the computer's move.
+
+            // Find the winner of this round. (And log the player's move, for game stat tracking).
             switch (playerMove)
             {
                 case Moves.ROCK:
-                    rockPlayedAmount++;
+                    // if computer won
+                    if (computerMove == Moves.PAPER)
+                    {
+                        computerScore++;
+                    }
+                    // otherwise, if computer and player moves are not equal, then player won.
+                    else if (computerMove != playerMove)
+                    {
+                        playerScore++;
+                    }
+                    // Otherwise its a tie.
+                    else
+                    {
+                        Console.WriteLine("Tie!");
+                    }
+                    rockPlayedAmount++; // logging
                     break;
 
                 case Moves.PAPER:
-                    paperPlayedAmount++;
+                    // if computer won
+                    if (computerMove == Moves.SCISSORS)
+                    {
+                        computerScore++;
+                    }
+                    // otherwise, if computer and player moves are not equal, then player won.
+                    else if (computerMove != playerMove)
+                    {
+                        playerScore++;
+                    }
+                    // Otherwise its a tie.
+                    else
+                    {
+                        Console.WriteLine("Tie!");
+                    }
+                    paperPlayedAmount++; // logging
                     break;
 
                 case Moves.SCISSORS:
-                    scissorsPlayedAmount++;
-                    break;
-            }
-
-            // Find the winner of this round.
-            switch (computerMove)
-            {
-                case Moves.ROCK:
-                    if (playerMove == Moves.PAPER)
-                    {
-                        playerScore++;
-                    }
-                    else
+                    // if computer won
+                    if (computerMove == Moves.ROCK)
                     {
                         computerScore++;
                     }
-                    break;
-
-                case Moves.PAPER:
-                    if (playerMove == Moves.SCISSORS)
+                    // otherwise, if computer and player moves are not equal, then player won.
+                    else if (computerMove != playerMove)
                     {
                         playerScore++;
                     }
+                    // Otherwise its a tie.
                     else
                     {
-                        computerScore++;
+                        Console.WriteLine("Tie!");
                     }
-                    break;
-
-                case Moves.SCISSORS:
-                    if (playerMove == Moves.ROCK)
-                    {
-                        playerScore++;
-                    }
-                    else
-                    {
-                        computerScore++;
-                    }
+                    scissorsPlayedAmount++; // logging
                     break;
             }
         }

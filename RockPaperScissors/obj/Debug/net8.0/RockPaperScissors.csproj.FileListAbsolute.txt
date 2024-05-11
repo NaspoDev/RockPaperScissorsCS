@@ -12,3 +12,6 @@ C:\Users\at6118075\dev\projects\learning_projects\RockPaperScissors\RockPaperSci
 C:\Users\at6118075\dev\projects\learning_projects\RockPaperScissors\RockPaperScissors\obj\Debug\net8.0\RockPaperScissors.pdb
 C:\Users\at6118075\dev\projects\learning_projects\RockPaperScissors\RockPaperScissors\obj\Debug\net8.0\RockPaperScissors.genruntimeconfig.cache
 C:\Users\at6118075\dev\projects\learning_projects\RockPaperScissors\RockPaperScissors\obj\Debug\net8.0\ref\RockPaperScissors.dll
+C:\Users\at6118075\dev\projects\learning_projects\RockPaperScissors\RockPaperScissors\obj\Debug\net8.0\RockPaperScissors.csproj.AssemblyReference.cache
+C:\Users\at6118075\dev\projects\learning_projects\RockPaperScissors\RockPaperScissors\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\at6118075\dev\projects\learning_projects\RockPaperScissors\RockPaperScissors\obj\Debug\net8.0\RockPape.65892C9A.Up2Date

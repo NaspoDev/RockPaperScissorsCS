@@ -1,10 +1,6 @@
 ﻿using AthanasiosT.RockerPaperScissors.Data;
 using AthanasiosT.RockPaperScissors.CLI;
-using System;
 using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AthanasiosT.RockerPaperScissors.CLI
 {
@@ -20,18 +16,24 @@ namespace AthanasiosT.RockerPaperScissors.CLI
 
         public MenuCLI(DataManager dataManager)
         {
+            this.dataManager = dataManager;
+
+            // Defining menu options.
             MenuOptions.Add("Play", new Action(StartGame));
-            MenuOptions.Add("View Stats", new Action(ViewStats));
+            MenuOptions.Add("View Stats", new Action(DisplayStats));
         }
 
-        internal void StartMenuCli()
+        // Start the Menu CLI
+        internal void Start()
         {
             // List of cli option keys
             List<string> optionKeys = MenuOptions.Keys.Cast<string>().ToList();
 
-            Console.WriteLine("What would you like to do?");
             while (true)
             {
+                // Header
+                Console.WriteLine("\n=== Main Menu ===");
+
                 // loop and display all the options, numbered.
                 for (int i = 0; i < MenuOptions.Count; i++)
                 {
@@ -39,15 +41,14 @@ namespace AthanasiosT.RockerPaperScissors.CLI
                 }
 
                 // Prompt user to select an option
-                Console.WriteLine(($"Enter your choice (\"{CLIUtils.QuitInputValue}\" to quit): "))
-                string input = CLIUtils.GetValidCliInput(1, MenuOptions.Count);
-                
+                Console.Write(($"Enter your choice (\"{CLIUtils.QuitInputValue}\" to quit): "));
+                string input = CLIUtils.GetValidCliInput(1, MenuOptions.Count + 1);
+
                 // If the input was a quit command, quit.
                 if (input.Equals(CLIUtils.QuitInputValue))
                 {
                     break;
                 }
-                
                 // Otherwise, parse the selection, and execute the corresponding Action with that option.
                 else
                 {
@@ -69,9 +70,11 @@ namespace AthanasiosT.RockerPaperScissors.CLI
         // Display the global game stats.
         private void DisplayStats()
         {
-
-            Console.WriteLine("Game Stats:");
-            Console.WriteLine("Total Wins: ");
+            Console.WriteLine("\n=== Lifetime Statistics === ");
+            Console.WriteLine($"Total wins: {dataManager.GameData.TotalWins}");
+            Console.WriteLine($"You played ROCK {dataManager.GameData.RockPlayedAmount} times.");
+            Console.WriteLine($"You played PAPER {dataManager.GameData.PaperPlayedAmount} times.");
+            Console.WriteLine($"You played SCISSORS {dataManager.GameData.ScissorsPlayedAmount} times.");
         }
     }
 }
