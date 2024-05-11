@@ -10,7 +10,8 @@ namespace AthanasiosT.RockerPaperScissors.Data
         const string DataFileName = "rps-data.json";
         const string CompleteDataFilePath = DataFileLocation + DataFileName;
 
-        readonly GameData gameData;
+        readonly GameData gameData; // GameData field
+        internal GameData GameData { get { return gameData; } }
 
         // Constructor restores the game data from save file data.
         public DataManager()

@@ -12,7 +12,7 @@ namespace AthanasiosT.RockerPaperScissors.CLI
     {
         private Random rand = new Random();
         private const int AmountOfRoundsOdd = 3; // Amount of rounds played (takes best of). Must be odd and >= 3.
-        private int playerScore = 0; 
+        private int playerScore = 0;
         private int computerScore = 0;
 
         // Game stats, fields. (Any form of data the we keep track of for a game)
@@ -21,12 +21,12 @@ namespace AthanasiosT.RockerPaperScissors.CLI
         private int scissorsPlayedAmount = 0;
 
         // Game stats, properties.
-        internal int RockPlayedAmount { get; }
-        internal int PaperPlayedAmount { get; }
-        internal int ScissorsPlayedAmount { get; }
+        internal int RockPlayedAmount { get { return rockPlayedAmount; } } 
+        internal int PaperPlayedAmount { get { return paperPlayedAmount; } }
+        internal int ScissorsPlayedAmount { get { return scissorsPlayedAmount; } }
 
         // Run the game process. Best of style, against randomly generated moves.
-        internal void Run()
+        internal void Start()
         {
             Console.WriteLine($"Let's play Rock-Paper-Scissors! Best of {AmountOfRoundsOdd} wins.");
 
@@ -79,7 +79,7 @@ namespace AthanasiosT.RockerPaperScissors.CLI
             // Log the player move (for game stat tracking)
             switch (playerMove)
             {
-                case Moves.ROCK: 
+                case Moves.ROCK:
                     rockPlayedAmount++;
                     break;
 
