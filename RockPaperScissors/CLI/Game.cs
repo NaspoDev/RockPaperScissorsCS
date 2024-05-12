@@ -15,6 +15,7 @@ namespace AthanasiosT.RockerPaperScissors.CLI
         private int paperPlayedAmount;
         private int scissorsPlayedAmount;
         private bool playerWon; // set after game finishes.
+        private bool quitGame = false; // Set to true if the player quits the game. Is then checked in the game run loop, and exists if true.
 
         // Game stats, properties.
         internal int RockPlayedAmount { get { return rockPlayedAmount; } }
@@ -32,6 +33,12 @@ namespace AthanasiosT.RockerPaperScissors.CLI
             while (true)
             {
                 PlayRound(roundCount);
+
+                // If the player quit the game, exit.
+                if (quitGame)
+                {
+                    return;
+                }
 
                 // Check if game is over. (Check if best of is achieved).
                 int bestOfThreshold = (int)Math.Ceiling((double)BestOfPointsOdd / 2);
@@ -75,6 +82,7 @@ namespace AthanasiosT.RockerPaperScissors.CLI
             {
                 playerScore = 0;
                 computerScore = 0;
+                quitGame = true;
                 return;
             }
 
