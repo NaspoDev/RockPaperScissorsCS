@@ -14,6 +14,9 @@ namespace AthanasiosT.RockerPaperScissors
             // Welcome message
             Console.WriteLine("Welcome to Rock Paper Scissors!");
             menu.Start();
+
+            // Write game data to disk when program finishes.
+            dataManager.WriteData();
         }
     }
 }

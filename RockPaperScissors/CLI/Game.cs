@@ -1,9 +1,4 @@
 ﻿using AthanasiosT.RockPaperScissors.CLI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AthanasiosT.RockerPaperScissors.CLI
 {
@@ -19,11 +14,13 @@ namespace AthanasiosT.RockerPaperScissors.CLI
         private int rockPlayedAmount;
         private int paperPlayedAmount;
         private int scissorsPlayedAmount;
+        private bool playerWon; // set after game finishes.
 
         // Game stats, properties.
         internal int RockPlayedAmount { get { return rockPlayedAmount; } }
         internal int PaperPlayedAmount { get { return paperPlayedAmount; } }
         internal int ScissorsPlayedAmount { get { return scissorsPlayedAmount; } }
+        internal bool PlayerWon { get { return playerWon; } }
 
         // Run the game process. Best of style, against randomly generated moves.
         internal void Start()
@@ -42,11 +39,15 @@ namespace AthanasiosT.RockerPaperScissors.CLI
                     // Get the winner
                     if (playerScore >= 2)
                     {
+                        // Player won
                         Console.WriteLine("\nGame over. You win!");
+                        playerWon = true;
                     }
                     else
                     {
+                        // Player lost
                         Console.WriteLine("\nGame over. You lost :(");
+                        playerWon = false;
                     }
                     // Print the score.
                     Console.WriteLine($"Your score: {playerScore} | Computer's score: {computerScore}");

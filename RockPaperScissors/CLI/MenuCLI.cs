@@ -11,7 +11,6 @@ namespace AthanasiosT.RockerPaperScissors.CLI
         // Ordered dict of menu options with their correlated action. 
         // The Action class in a function delegate with no arguments or return type.
         OrderedDictionary MenuOptions = new OrderedDictionary(); // There is no generic implementation if OrderedDictionary :(
-        internal List<Game> games = new List<Game>(); // List of games for this session.
         private DataManager dataManager; // DataManager dependency.
 
         public MenuCLI(DataManager dataManager)
@@ -64,17 +63,17 @@ namespace AthanasiosT.RockerPaperScissors.CLI
         {
             Game game = new Game();
             game.Start();
-            games.Add(game);
+            dataManager.games.Add(game);
         }
 
         // Display the global game stats.
         private void DisplayStats()
         {
             Console.WriteLine("\n=== Lifetime Statistics === ");
-            Console.WriteLine($"Total wins: {dataManager.GameData.TotalWins}");
-            Console.WriteLine($"You played ROCK {dataManager.GameData.RockPlayedAmount} times.");
-            Console.WriteLine($"You played PAPER {dataManager.GameData.PaperPlayedAmount} times.");
-            Console.WriteLine($"You played SCISSORS {dataManager.GameData.ScissorsPlayedAmount} times.");
+            Console.WriteLine($"You've won {dataManager.GameData.TotalWins} out of {dataManager.GameData.TotalGamesPlayed} games.");
+            Console.WriteLine($"You played rock {dataManager.GameData.RockPlayedAmount} times.");
+            Console.WriteLine($"You played paper {dataManager.GameData.PaperPlayedAmount} times.");
+            Console.WriteLine($"You played scissors {dataManager.GameData.ScissorsPlayedAmount} times.");
         }
     }
 }

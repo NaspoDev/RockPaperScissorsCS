@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using AthanasiosT.RockerPaperScissors.CLI;
+using Newtonsoft.Json;
 
 namespace AthanasiosT.RockerPaperScissors.Data
 {
@@ -13,6 +14,7 @@ namespace AthanasiosT.RockerPaperScissors.Data
 
         readonly GameData gameData; // GameData field
         internal GameData GameData { get { return gameData; } } // GameData property
+        internal List<Game> games = new List<Game>(); // List of games for this session.
 
         // Constructor restores the game data from save file data.
         public DataManager()
@@ -50,8 +52,22 @@ namespace AthanasiosT.RockerPaperScissors.Data
             return JsonConvert.DeserializeObject<GameData>(rawJson);
         }
 
-        // Destructor saves the game data to the file.
-        ~DataManager()
+        // Updates the lifetime game data with the provided game.
+        internal void UpdateStatistics(Game game)
+        {
+            GameData.TotalGamesPlayed++;
+            GameData.RockPlayedAmount = GameData.RockPlayedAmount + game.RockPlayedAmount;
+            GameData.PaperPlayedAmount = GameData.PaperPlayedAmount + game.PaperPlayedAmount;
+            GameData.ScissorsPlayedAmount = GameData.ScissorsPlayedAmount + game.ScissorsPlayedAmount;
+
+            if (game.PlayerWon)
+            {
+                GameData.TotalWins++;
+            }
+        }
+
+        // Write game data to disk. Typically called at the end of the program.
+        internal void WriteData()
         {
             // Create the file path. If it already exists this will do nothing.
             Directory.CreateDirectory(DataFileLocation);
