@@ -6,7 +6,7 @@ namespace AthanasiosT.RockerPaperScissors.CLI
     internal class Game
     {
         private Random rand = new Random();
-        private const int AmountOfRoundsOdd = 3; // Amount of rounds played (takes best of). Must be odd and >= 3.
+        private const int AmountOfPointsOdd = 3; // Amount of rounds played (takes best of). Must be odd and >= 3.
         private int playerScore = 0;
         private int computerScore = 0;
 
@@ -25,15 +25,16 @@ namespace AthanasiosT.RockerPaperScissors.CLI
         // Run the game process. Best of style, against randomly generated moves.
         internal void Start()
         {
-            Console.WriteLine($"\n=== Let's play Rock-Paper-Scissors! Best of {AmountOfRoundsOdd} wins. ===");
+            Console.WriteLine($"\n=== Let's play Rock-Paper-Scissors! Best of {AmountOfPointsOdd} wins. ===");
 
             // Play amount of rounds specified.
-            for (int i = 0; i < AmountOfRoundsOdd; i++)
+            int roundCount = 1;
+            while (true)
             {
-                PlayRound(i + 1);
+                PlayRound(roundCount);
 
                 // Check if game is over. (Check if best of is achieved).
-                int bestOfThreshold = (int)Math.Ceiling((double)AmountOfRoundsOdd / 2);
+                int bestOfThreshold = (int)Math.Ceiling((double)AmountOfPointsOdd / 2);
                 if (playerScore >= bestOfThreshold || computerScore >= bestOfThreshold)
                 {
                     // Get the winner
@@ -53,6 +54,8 @@ namespace AthanasiosT.RockerPaperScissors.CLI
                     Console.WriteLine($"Your score: {playerScore} | Computer's score: {computerScore}");
                     return;
                 }
+
+                roundCount++;
             }
         }
 
