@@ -3,10 +3,10 @@
     // Data class for local game data. (To be JSON deserialized and serialized)
     internal class GameData
     {
-        internal int TotalWins { get; set; }
-        internal int TotalGamesPlayed { get; set; }
-        internal int RockPlayedAmount { get; set; }
-        internal int PaperPlayedAmount { get; set; }
-        internal int ScissorsPlayedAmount { get; set; }
+        public int TotalWins { get; set; }
+        public int TotalGamesPlayed { get; set; }
+        public int RockPlayedAmount { get; set; }
+        public int PaperPlayedAmount { get; set; }
+        public int ScissorsPlayedAmount { get; set; }
     }
 }

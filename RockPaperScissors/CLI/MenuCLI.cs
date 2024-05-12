@@ -63,7 +63,7 @@ namespace AthanasiosT.RockerPaperScissors.CLI
         {
             Game game = new Game();
             game.Start();
-            dataManager.games.Add(game);
+            dataManager.UpdateStatistics(game);
         }
 
         // Display the global game stats.

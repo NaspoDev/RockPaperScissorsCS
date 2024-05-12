@@ -14,7 +14,6 @@ namespace AthanasiosT.RockerPaperScissors.Data
 
         readonly GameData gameData; // GameData field
         internal GameData GameData { get { return gameData; } } // GameData property
-        internal List<Game> games = new List<Game>(); // List of games for this session.
 
         // Constructor restores the game data from save file data.
         public DataManager()
