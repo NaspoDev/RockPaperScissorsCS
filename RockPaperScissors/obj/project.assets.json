@@ -55,19 +55,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\at6118075\\.nuget\\packages\\": {}
+    "C:\\Users\\atsub\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\at6118075\\dev\\projects\\learning_projects\\RockPaperScissors\\RockPaperScissors\\RockPaperScissors.csproj",
+      "projectUniqueName": "C:\\Users\\atsub\\VisualStudioProjects\\other_projects\\RockPaperScissors\\RockPaperScissors\\RockPaperScissors.csproj",
       "projectName": "RockPaperScissors",
-      "projectPath": "C:\\Users\\at6118075\\dev\\projects\\learning_projects\\RockPaperScissors\\RockPaperScissors\\RockPaperScissors.csproj",
-      "packagesPath": "C:\\Users\\at6118075\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\at6118075\\dev\\projects\\learning_projects\\RockPaperScissors\\RockPaperScissors\\obj\\",
+      "projectPath": "C:\\Users\\atsub\\VisualStudioProjects\\other_projects\\RockPaperScissors\\RockPaperScissors\\RockPaperScissors.csproj",
+      "packagesPath": "C:\\Users\\atsub\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\atsub\\VisualStudioProjects\\other_projects\\RockPaperScissors\\RockPaperScissors\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\at6118075\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\atsub\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

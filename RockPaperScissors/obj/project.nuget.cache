@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "P/wpXEJA4MM+zqJHH9HkY3skN5zTDOqh82t4nkuCi74GmqLRljAHlX6t5EMfZYwiaBKAambvabC3O5QXjhF//g==",
+  "dgSpecHash": "3YCOdSEDA7oncYf1DLDaFKkIFZ7d3w5YDydX/a32pEbP8YIEbiDd0KrOiT4LAEa2IsqPoM9Ep2QrOcEf/1ee9Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\at6118075\\dev\\projects\\learning_projects\\RockPaperScissors\\RockPaperScissors\\RockPaperScissors.csproj",
+  "projectFilePath": "C:\\Users\\atsub\\VisualStudioProjects\\other_projects\\RockPaperScissors\\RockPaperScissors\\RockPaperScissors.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\at6118075\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+    "C:\\Users\\atsub\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": []
 }

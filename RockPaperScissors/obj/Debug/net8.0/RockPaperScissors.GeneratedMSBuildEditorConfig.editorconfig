@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = RockPaperScissors
-build_property.ProjectDir = C:\Users\at6118075\dev\projects\learning_projects\RockPaperScissors\RockPaperScissors\
+build_property.ProjectDir = C:\Users\atsub\VisualStudioProjects\other_projects\RockPaperScissors\RockPaperScissors\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
